@@ -1,3 +1,36 @@
+<?php
+    require_once __DIR__ . './src/cdnBootstrap.php';
+    require_once __DIR__ . './src/cdnFontAwesome.php';
+    require_once __DIR__ . './database/getConnection.php';
+   
+    //get conection to database
+    $connection = getConnection();
+
+    // logic dari button submit
+    if(isset($_POST['submit'])) {
+        $nama = $_POST['name'];
+        $email = $_POST['email'];
+        $username = $_POST['username'];
+        $password = $_POST['password'];
+        $rePassword = $_POST['re_password'];
+        
+        $sql = "INSERT INTO tb_register_login (nama,email,username,password,re_password) 
+                VALUE(:nama,:email,:username,:password,:rePassword)";
+        $result = $connection->prepare($sql);
+        $params = array (
+            ":nama" => $nama,
+            ":email" => $email,
+            ":username" => $username,
+            ":password" => $password,
+            ":rePassword" => $rePassword
+        );
+        $saved = $result->execute($params);
+        if ($saved) {
+            header("location:login.php");
+        }
+        $connection = null;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -5,17 +38,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Register</title>
-    <!-- Link bootstrap v5.2.0 bundle css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
-    <!-- Link bootstrap v5.2.0 bundle js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" defer></script>
   </head>
   <body>
     <section class="card container-fluid bg-light py-3" style="width: 50%;margin-top:4rem;">
       <!-- justify-content-center untuk mengatur posisi form agar berada di tengah-tengah -->
       <section class="row justify-content-center">
         <section class="col-12 col-sm-6 col-md-4">
-          <form class="form-container" action="register.php" method="POST">
+          <form class="form-container" method="POST">
             <h4 class="text-center font-weight-bold py-4">Sign-Up</h4>
             <div class="form-group">
               <label for="name">Nama</label>
@@ -36,7 +65,7 @@
             </div>
             <div class="form-group">
               <label for="InputPassword">Re-Password</label>
-              <input type="password" class="form-control" id="InputRePassword" name="repassword" placeholder="Re-Password" />
+              <input type="password" class="form-control" id="InputRePassword" name="re_password" placeholder="Re-Password" />
               <p class="text-danger"></p>
             </div>
             <button type="submit" name="submit" class="btn btn-primary btn-block">Register</button>
