@@ -21,11 +21,11 @@
             <h4 class="text-center font-weight-bold">Sign-In</h4>
             <div class="form-group">
               <label for="username">Username</label>
-              <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" />
+              <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" required/>
             </div>
             <div class="form-group">
               <label for="InputPassword">Password</label>
-              <input type="password" class="form-control" id="InputPassword" name="password" placeholder="Password" />
+              <input type="password" class="form-control" id="InputPassword" name="password" placeholder="Password" required />
               <p class="text-danger"></p>
             </div>
             <button type="submit" name="submit" class="btn btn-primary btn-block">Sign In</button>

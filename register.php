@@ -48,24 +48,24 @@
             <h4 class="text-center font-weight-bold py-4">Sign-Up</h4>
             <div class="form-group">
               <label for="name">Nama</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama" />
+              <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan Nama" required/>
             </div>
             <div class="form-group">
               <label for="InputEmail">Alamat Email</label>
-              <input type="email" class="form-control" id="InputEmail" name="email" aria-describeby="emailHelp" placeholder="Masukkan email" />
+              <input type="email" class="form-control" id="InputEmail" name="email" aria-describeby="emailHelp" placeholder="Masukkan email"required />
             </div>
             <div class="form-group">
               <label for="username">Username</label>
-              <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username" />
+              <input type="text" class="form-control" id="username" name="username" placeholder="Masukkan username"required />
             </div>
             <div class="form-group">
               <label for="InputPassword">Password</label>
-              <input type="password" class="form-control" id="InputPassword" name="password" placeholder="Password" />
+              <input type="password" class="form-control" id="InputPassword" name="password" placeholder="Password" required/>
               <p class="text-danger"></p>
             </div>
             <div class="form-group">
               <label for="InputPassword">Re-Password</label>
-              <input type="password" class="form-control" id="InputRePassword" name="re_password" placeholder="Re-Password" />
+              <input type="password" class="form-control" id="InputRePassword" name="re_password" placeholder="Re-Password " required/>
               <p class="text-danger"></p>
             </div>
             <button type="submit" name="submit" class="btn btn-primary btn-block">Register</button>
