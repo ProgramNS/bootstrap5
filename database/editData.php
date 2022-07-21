@@ -1,5 +1,7 @@
 <?php
     require_once __DIR__ . './getConnection.php';
+
+
     if(isset($_POST['submit'])){
         $connection = getConnection();
         $brand = $_POST['brand'];
@@ -17,12 +19,15 @@
           return false;
         } 
         if(move_uploaded_file($tmp,$path)){
-        $sql = $connection -> prepare("insert into tb_product (brand,ukuran,kondisi_topi,deskripsi,harga,foto) value(?,?,?,?,?,?)");
-<<<<<<< HEAD
-        $sql -> execute(array($brand,$ukuran,$kondisi,$deskripsi,$harga,$foto));
-=======
+        $sql = $connection -> prepare("update tb_product set 
+                                       brand ='$brand',
+                                       ukuran='$ukuran',
+                                       kondisi_topi='$kondisi',
+                                       deskripsi='$deskripsi',
+                                       harga='$harga',
+                                       foto='$foto'
+                                       ");
         $sql -> execute(array($brand,$ukuran,$kondisi,$harga,$deskripsi,$foto));
->>>>>>> 4dd6d8239d8373b246c3a62736e78849ed29e5b0
         echo "<script>alert('Tambah Data Berhasil');</script>";
         }
     }
@@ -44,11 +49,11 @@
   <body>
     <!-- Modal -->
     <form method="POST" enctype="multipart/form-data">
-      <div class="modal fade" id="tambahData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">

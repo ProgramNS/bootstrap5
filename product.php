@@ -34,6 +34,7 @@
         </thead>        
         <tbody class="table-group-divider">
           <?php 
+<<<<<<< HEAD
             $no = 1;
             $conncection = getConnection();
             $sql = $conncection -> prepare("select * from tb_product"); 
@@ -54,6 +55,27 @@
             </tr>
             <?php }?>
             <?php $conncection = null;?>
+=======
+          $conncection = getConnection();
+          $sql = $conncection -> prepare("select * from tb_product"); 
+          $sql -> execute(); 
+          while($data = $sql -> fetch()) {
+            ?>
+            <tr>
+              <th scope="row"><?php echo $data['id'];?></th>
+              <td><?php echo $data['brand'];?></td>
+              <td><?php echo $data['ukuran'];?></td>
+              <td><?php echo $data['kondisi_topi'];?></td>
+              <td><?php echo $data['harga'];?></td>
+              <td><?php echo $data['deskripsi'];?></td>
+              <td><img src='upload/<?php echo $data['foto'];?>'style='width:40px;'/></td>
+              <?php require_once __DIR__ . './database/editData.php';?>
+              <td><button class='btn btn-primary btn-sm' data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                  <button class='btn btn-primary btn-sm'>Delete</button></td>
+                </tr>
+                <?php }?>
+                <?php $conncection = null;?>
+>>>>>>> 4dd6d8239d8373b246c3a62736e78849ed29e5b0
           </tbody>
         </table>
     </div>
