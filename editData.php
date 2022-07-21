@@ -1,7 +1,18 @@
 <?php
-    require_once __DIR__ . './getConnection.php';
-    if(isset($_POST['submit'])){
+    require_once __DIR__ . './database/getConnection.php';
+    $conncection = getConnection();
+    $id = $_GET['id'];
+    $sql = $conncection -> prepare("select * from tb_product where id=?"); 
+    $sql -> execute(array($id)); 
+    $data = $sql -> fetch();
+
+    if(isset($_POST['kembali'])){
+        header("location:product.php");
+    }
+
+    if(isset($_POST['edit'])){
         $connection = getConnection();
+        $id = $_GET['id'];
         $brand = $_POST['brand'];
         $ukuran = $_POST['ukuran'];
         $kondisi = $_POST['kondisi'];
@@ -11,15 +22,22 @@
         $tmp = $_FILES['gambar']['tmp_name'];
         $size = $_FILES['gambar']['size'];
         $path ="upload/".$foto;
-
+        
         if($size > 500000){
-          echo "<script>alert('File terlalu besar');</script>";
-          return false;
+            echo "<script>alert('File terlalu besar');</script>";
+            return false;
         } 
         if(move_uploaded_file($tmp,$path)){
-        $sql = $connection -> prepare("insert into tb_product (brand,ukuran,kondisi_topi,deskripsi,harga,foto) value(?,?,?,?,?,?)");
-        $sql -> execute(array($brand,$ukuran,$kondisi,$deskripsi,$harga,$foto));
-        echo "<script>alert('Tambah Data Berhasil');</script>";
+            $sql = $connection -> prepare(" update tb_product set 
+                                            brand =?,
+                                            ukuran=?,
+                                            kondisi_topi=?,
+                                            deskripsi=?,
+                                            harga=?,
+                                            foto=? where id=?
+                                            ");
+            $sql -> execute(array($brand,$ukuran,$kondisi,$deskripsi,$harga,$foto,$id));
+            echo "<script>alert('Edit Data Berhasil');</script>";
         }
     }
 ?>
@@ -40,21 +58,15 @@
   <body>
     <!-- Modal -->
     <form method="POST" enctype="multipart/form-data">
-      <div class="modal fade" id="tambahData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
+        <div class="form container-fluid bg-light bg-opacity-50 w-50 mt-5 md-4">
+            <h5 class="fw-medium">Edit Data</h5>
+        <div class="form-floating">
+            <input type="text" class="form-control mb-3" id="floatingInput" placeholder="Nama Brand" name="brand" value="<?php echo $data['brand']?>"/>
+            <label for="floatingInput">Nama Brand</label>
+        </div>  
               <div class="form-floating">
-                <input type="test" class="form-control mb-3" id="floatingInput" placeholder="Nama Brand" name="brand"/>
-                <label for="floatingInput">Nama Brand</label>
-              </div>
-              <div class="form-floating">
-                <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example" name="ukuran">
-                  <option selected>Pilih Ukuran</option>
+                <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example" name="ukuran" >                
+                  <option selected value="<?php echo $data['harga']?>"><?php echo $data['ukuran']?></option>
                   <option value="S">S</option>
                   <option value="M">M</option>
                   <option value="L">L</option>
@@ -65,7 +77,7 @@
               </div>
               <div class="form-floating">
                 <select class="form-select mb-3" id="floatingSelect" aria-label="Floating label select example" name="kondisi">
-                  <option selected>Pilih Kondisi Topi</option>
+                  <option selected value="<?php echo $data['harga']?>"><?php echo $data['kondisi_topi']?></option>
                   <option value="Second 90%">Second 90%</option>
                   <option value="Second 85%">Second 85%</option>
                   <option value="Second 80%">Second 80%</option>
@@ -75,25 +87,22 @@
                 <label for="floatingSelect">Kondisi Topi</label>
               </div>
               <div class="form-floating">
-                <textarea class="form-control mb-3" placeholder="Deskripsi Topi..." name="deskripsi" id="FloatingTextarea"></textarea>
+                <textarea class="form-control mb-3" placeholder="Deskripsi Topi..." name="deskripsi" id="FloatingTextarea"><?php echo $data['deskripsi']?></textarea>
                 <label for="floatingTextarea">Deskripsi Topi</label>
               </div>
               <div class="form-floating">
-                <input type="text" class="form-control mb-3" id="floatingInput" placeholder="Model Topi" name="harga"/>
+                <input type="text" class="form-control mb-3" id="floatingInput" placeholder="Model Topi" name="harga" value="<?php echo $data['harga']?>" />
                 <label for="floatingInput">Harga</label>
               </div>
               <label for="exampleFormControlInput1" class="form-label text-sm">Max file 500kb (.jpg)</label>
               <div class="input-group">
-                <input type="file" name="gambar" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+                <input type="file" name="gambar" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload"/>
               </div>
+              <button class='btn btn-primary btn-sm mt-3' type="submit" name="kembali">Kembali</button>
+              <button class='btn btn-primary btn-sm mt-3' type="submit" name="edit">Edit</button>
             </div>
-            <div class="modal-footer">
-              <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary" name="submit">Tambah</button>
-            </div>
-          </div>
-        </div>
-      </div>
+         </div>
+    </div>
     </form>
   </body>
 </html>
