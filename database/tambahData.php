@@ -49,7 +49,7 @@
             </div>
             <div class="modal-body">
               <div class="form-floating">
-                <input type="test" class="form-control mb-3" id="floatingInput" placeholder="Nama Brand" name="brand" required/>
+                <input type="test" class="form-control mb-3" id="floatingInput" placeholder="Nama Brand" name="brand"/>
                 <label for="floatingInput">Nama Brand</label>
               </div>
               <div class="form-floating">
@@ -75,11 +75,11 @@
                 <label for="floatingSelect">Kondisi Topi</label>
               </div>
               <div class="form-floating">
-                <textarea class="form-control mb-3" placeholder="Deskripsi Topi..." name="deskripsi" id="FloatingTextarea" required></textarea>
+                <textarea class="form-control mb-3" placeholder="Deskripsi Topi..." name="deskripsi" id="FloatingTextarea"></textarea>
                 <label for="floatingTextarea">Deskripsi Topi</label>
               </div>
               <div class="form-floating">
-                <input type="text" class="form-control mb-3" id="floatingInput" placeholder="Model Topi" name="harga" required/>
+                <input type="text" class="form-control mb-3" id="floatingInput" placeholder="Model Topi" name="harga"/>
                 <label for="floatingInput">Harga</label>
               </div>
               <label for="exampleFormControlInput1" class="form-label text-sm">Max file 500kb (.jpg)</label>
