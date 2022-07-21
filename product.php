@@ -26,31 +26,33 @@
             <th scope="col">Brand</th>
             <th scope="col">Ukuran</th>
             <th scope="col">Kondisi</th>
+            <th scope="col">Deskripsi</th>
             <th scope="col">Harga</th>
             <th scope="col">Foto</th>
             <th scope="col">Action</th>
           </tr>
-        </thead>
-        
+        </thead>        
         <tbody class="table-group-divider">
           <?php 
           $conncection = getConnection();
           $sql = $conncection -> prepare("select * from tb_product"); 
           $sql -> execute(); 
           while($data = $sql -> fetch()) {
-          ?>
+            ?>
             <tr>
               <th scope="row"><?php echo $data['id'];?></th>
               <td><?php echo $data['brand'];?></td>
               <td><?php echo $data['ukuran'];?></td>
               <td><?php echo $data['kondisi_topi'];?></td>
               <td><?php echo $data['harga'];?></td>
+              <td><?php echo $data['deskripsi'];?></td>
               <td><img src='upload/<?php echo $data['foto'];?>'style='width:40px;'/></td>
-              <td><a href='#'><button class='btn btn-primary btn-sm'>Edit</button>
-                  <a href='#'><button class='btn btn-primary btn-sm'>Delete</button></td></a>
-              </tr>
-            <?php }?>
-            <?php $conncection = null;?>
+              <?php require_once __DIR__ . './database/editData.php';?>
+              <td><button class='btn btn-primary btn-sm' data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                  <button class='btn btn-primary btn-sm'>Delete</button></td>
+                </tr>
+                <?php }?>
+                <?php $conncection = null;?>
           </tbody>
         </table>
     </div>

@@ -19,7 +19,14 @@
           return false;
         } 
         if(move_uploaded_file($tmp,$path)){
-        $sql = $connection -> prepare("insert into tb_product (brand,ukuran,kondisi_topi,deskripsi,harga,foto) value(?,?,?,?,?,?)");
+        $sql = $connection -> prepare("update tb_product set 
+                                       brand ='$brand',
+                                       ukuran='$ukuran',
+                                       kondisi_topi='$kondisi',
+                                       deskripsi='$deskripsi',
+                                       harga='$harga',
+                                       foto='$foto'
+                                       ");
         $sql -> execute(array($brand,$ukuran,$kondisi,$harga,$deskripsi,$foto));
         echo "<script>alert('Tambah Data Berhasil');</script>";
         }
@@ -46,7 +53,7 @@
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Tambah Data</h5>
+              <h5 class="modal-title" id="exampleModalLabel">Edit Data</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
