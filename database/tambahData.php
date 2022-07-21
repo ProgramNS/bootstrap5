@@ -18,11 +18,7 @@
         } 
         if(move_uploaded_file($tmp,$path)){
         $sql = $connection -> prepare("insert into tb_product (brand,ukuran,kondisi_topi,deskripsi,harga,foto) value(?,?,?,?,?,?)");
-<<<<<<< HEAD
         $sql -> execute(array($brand,$ukuran,$kondisi,$deskripsi,$harga,$foto));
-=======
-        $sql -> execute(array($brand,$ukuran,$kondisi,$harga,$deskripsi,$foto));
->>>>>>> 4dd6d8239d8373b246c3a62736e78849ed29e5b0
         echo "<script>alert('Tambah Data Berhasil');</script>";
         }
     }
@@ -53,7 +49,7 @@
             </div>
             <div class="modal-body">
               <div class="form-floating">
-                <input type="test" class="form-control mb-3" id="floatingInput" placeholder="Nama Brand" name="brand"/>
+                <input type="test" class="form-control mb-3" id="floatingInput" placeholder="Nama Brand" name="brand" required/>
                 <label for="floatingInput">Nama Brand</label>
               </div>
               <div class="form-floating">
@@ -79,16 +75,16 @@
                 <label for="floatingSelect">Kondisi Topi</label>
               </div>
               <div class="form-floating">
-                <textarea class="form-control mb-3" placeholder="Deskripsi Topi..." name="deskripsi" id="FloatingTextarea"></textarea>
+                <textarea class="form-control mb-3" placeholder="Deskripsi Topi..." name="deskripsi" id="FloatingTextarea" required></textarea>
                 <label for="floatingTextarea">Deskripsi Topi</label>
               </div>
               <div class="form-floating">
-                <input type="text" class="form-control mb-3" id="floatingInput" placeholder="Model Topi" name="harga"/>
+                <input type="text" class="form-control mb-3" id="floatingInput" placeholder="Model Topi" name="harga" required/>
                 <label for="floatingInput">Harga</label>
               </div>
               <label for="exampleFormControlInput1" class="form-label text-sm">Max file 500kb (.jpg)</label>
               <div class="input-group">
-                <input type="file" name="gambar" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" />
+                <input type="file" name="gambar" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload" required/>
               </div>
             </div>
             <div class="modal-footer">
