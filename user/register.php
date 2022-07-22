@@ -1,7 +1,7 @@
 <?php
-    require_once __DIR__ . './src/cdnBootstrap.php';
-    require_once __DIR__ . './src/cdnFontAwesome.php';
-    require_once __DIR__ . './database/getConnection.php';
+    require_once __DIR__ . './cdnBootstrap.php';
+    require_once __DIR__ . './cdnFontAwesome.php';
+    require_once __DIR__ . './getConnection.php';
    
     //get conection to database
     $connection = getConnection();

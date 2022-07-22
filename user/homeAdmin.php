@@ -1,10 +1,10 @@
 <?php
     require_once __DIR__ . './cdnBootstrap.php';
     require_once __DIR__ . './cdnFontAwesome.php';
-    require_once __DIR__ . './navbar.php';
-    require_once __DIR__ . './jumbotron.php';
-    require_once __DIR__ . './footer.php';
+    require_once __DIR__ . './sessionAdmin.php';
+    require_once __DIR__ . './product.php';
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

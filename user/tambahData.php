@@ -11,7 +11,6 @@
         $tmp = $_FILES['gambar']['tmp_name'];
         $size = $_FILES['gambar']['size'];
         $path ="upload/".$foto;
-
         if($size > 500000){
           echo "<script>alert('File terlalu besar');</script>";
           return false;

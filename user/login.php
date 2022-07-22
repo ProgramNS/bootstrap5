@@ -1,7 +1,7 @@
 <?php
-    require_once __DIR__ . './src/cdnBootstrap.php';
-    require_once __DIR__ . './src/cdnFontAwesome.php';
-    require_once __DIR__ . './database/getConnection.php';
+    require_once __DIR__ . './cdnBootstrap.php';
+    require_once __DIR__ . './cdnFontAwesome.php';
+    require_once __DIR__ . './getConnection.php';
 ?>
     
 
@@ -38,20 +38,39 @@
 
                 // logic dari button submit
                 if(isset($_POST['submit'])){
+                    session_start();
                     $username = $_POST['username'];
                     $password = $_POST['password'];
                     
-                    // $sql = "SELECT * FROM tb_register_login WHERE username = :username";
+                    // login user
                     $sql = $connection -> prepare("select * from tb_register_login where username =? and password =?");
-                    $sql->execute(array($username,$password));                
+                    $sql->execute(array($username,$password));              
+                    $sql1 = $connection-> prepare("select * from tb_register_login where username ='$username'");
+                    $sql1->execute();
                     $count = $sql->fetchColumn();
                     
                     if($count == true){
-                      header("location:index.php");
+                      $_SESSION['username'] = $sql1->fetch();
+                      header("location:home.php");
                     }
                         else{
                           echo "<script>alert('gagal')</script>";
                           }
+                   
+                    // login admin
+                    $sql2 = $connection -> prepare("select * from tb_admin where username =? and password =?");
+                    $sql2->execute(array($username,$password));              
+                    $sql3 = $connection-> prepare("select * from tb_admin where username ='$username'");
+                    $sql3->execute();
+                    $count = $sql3->fetchColumn();
+                          
+                    if($count == true){
+                        $_SESSION['username'] = $sql2->fetch();
+                        header("location:homeAdmin.php");
+                      }
+                      else{
+                          echo "<script>alert('gagal')</script>";
+                         }
                   }
             ?>
           </form>

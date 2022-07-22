@@ -1,7 +1,7 @@
 <?php
-    require_once __DIR__ . './database/getConnection.php';
-    require_once __DIR__ . './src/cdnBootstrap.php';
-    require_once __DIR__ . './src/cdnFontAwesome.php';
+    require_once __DIR__ . './getConnection.php';
+    require_once __DIR__ . './cdnBootstrap.php';
+    require_once __DIR__ . './cdnFontAwesome.php';
     $conncection = getConnection();
     $id = $_GET['id'];
     $sql = $conncection -> prepare("select * from tb_product where id=?"); 
