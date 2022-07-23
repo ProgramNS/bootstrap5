@@ -1,12 +1,14 @@
-<?php
-    require_once __DIR__ . './getConnection.php';
+<?php 
+    require_once('jumbotronAdmin.php');
+    require_once('../database/getConnection.php');
     if(isset($_POST['submit'])){
         $connection = getConnection();
         $brand = $_POST['brand'];
         $ukuran = $_POST['ukuran'];
         $kondisi = $_POST['kondisi'];
         $deskripsi = $_POST['deskripsi'];
-        $harga = $_POST['harga'];
+        $hargaAsli = $_POST['hargaAsli'];
+        $hargaDiskon = $_POST['hargaDiskon'];
         $foto = $_FILES['gambar']['name'];
         $tmp = $_FILES['gambar']['tmp_name'];
         $size = $_FILES['gambar']['size'];
@@ -16,27 +18,21 @@
           return false;
         } 
         if(move_uploaded_file($tmp,$path)){
-        $sql = $connection -> prepare("insert into tb_product (brand,ukuran,kondisi_topi,deskripsi,harga,foto) value(?,?,?,?,?,?)");
-        $sql -> execute(array($brand,$ukuran,$kondisi,$deskripsi,$harga,$foto));
+        $sql = $connection -> prepare("insert into tb_product_diskon (brand,ukuran,kondisi_topi,deskripsi,harga_asli,harga_diskon,foto) value(?,?,?,?,?,?,?)");
+        $sql -> execute(array($brand,$ukuran,$kondisi,$deskripsi,$hargaAsli,$hargaDiskon,$foto));
         echo "<script>alert('Tambah Data Berhasil');</script>";
         }
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Link bootstrap v5.2.0 bundle css -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" />
-    <!-- Link bootstrap v5.2.0 bundle js -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" defer></script>
-    <!-- Link font-awesome v6.1.1 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
     <!-- Modal -->
     <form method="POST" enctype="multipart/form-data">
       <div class="modal fade" id="tambahData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -78,8 +74,12 @@
                 <label for="floatingTextarea">Deskripsi Topi</label>
               </div>
               <div class="form-floating">
-                <input type="text" class="form-control mb-3" id="floatingInput" placeholder="Model Topi" name="harga"/>
-                <label for="floatingInput">Harga</label>
+                <input type="text" class="form-control mb-3" id="floatingInput" placeholder="Model Topi" name="hargaAsli"/>
+                <label for="floatingInput">Harga Asli</label>
+              </div>
+              <div class="form-floating">
+                <input type="text" class="form-control mb-3" id="floatingInput" placeholder="Model Topi" name="hargaDiskon"/>
+                <label for="floatingInput">Harga Diskon</label>
               </div>
               <label for="exampleFormControlInput1" class="form-label text-sm">Max file 500kb (.jpg)</label>
               <div class="input-group">
@@ -94,5 +94,5 @@
         </div>
       </div>
     </form>
-  </body>
+</body>
 </html>

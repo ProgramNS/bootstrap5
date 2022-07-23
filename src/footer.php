@@ -1,6 +1,6 @@
 <?php
-    require_once __DIR__ . './cdnBootstrap.php';
-    require_once __DIR__ . './cdnFontAwesome.php';
+    require_once('cdnBootstrap.php');
+    require_once('cdnFontAwesome.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,14 +28,11 @@
             <h5>Contact</h5>
             <ul class="list-unstyled">
               <a href="https://api.whatsapp.com/send?phone=6289531580687" class="nav-link">
-                <li class="mb-2"><i class="fa-brands fa-whatsapp"></i> WhatsApp</li></a
-              >
+                <li class="mb-2"><i class="fa-brands fa-whatsapp"></i> WhatsApp</li></a>
               <a href="https://web.facebook.com/nurman270/" class="nav-link">
-                <li class="mb-2"><i class="fa-brands fa-facebook"></i> Facebook</li></a
-              >
-              <a href="" class="nav-link">
-                <li class="mb-2"><i class="fa-brands fa-instagram"></i> Instagram</li></a
-              >
+                <li class="mb-2"><i class="fa-brands fa-facebook"></i> Facebook</li></a>
+              <a href="#" class="nav-link">
+                <li class="mb-2"><i class="fa-brands fa-instagram"></i> Instagram</li></a>
             </ul>
           </div>
           <div class="col-6 col-lg-2 offset-lg-2 mb-2">

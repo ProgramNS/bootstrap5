@@ -1,7 +1,7 @@
 <?php
-    require_once __DIR__ . './cdnBootstrap.php';
-    require_once __DIR__ . './cdnFontAwesome.php';
-    require_once __DIR__ . './getConnection.php';
+    require_once('../src/cdnBootstrap.php');
+    require_once('../src/cdnFontAwesome.php');
+    require_once('../database/getConnection.php');
 ?>
     
 
@@ -66,7 +66,7 @@
                           
                     if($count == true){
                         $_SESSION['username'] = $sql2->fetch();
-                        header("location:homeAdmin.php");
+                        header("location:../admin/homeAdmin.php");
                       }
                       else{
                           echo "<script>alert('gagal')</script>";

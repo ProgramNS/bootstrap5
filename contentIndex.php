@@ -1,8 +1,8 @@
 <?php
-    require_once __DIR__ . './user/getConnection.php';
-    require_once __DIR__ . './user/cdnBootstrap.php';
-    require_once __DIR__ . './user/cdnFontAwesome.php';
-    require_once __DIR__ . './navbar.php';
+    require_once('database/getConnection.php');
+    require_once('src/cdnBootstrap.php');
+    require_once('src/cdnFontAwesome.php');
+    require_once('src/navbar.php');
     $conection = getConnection();
     $sql = $conection -> prepare("select * from tb_product");
     $sql->execute();
@@ -26,7 +26,7 @@ while($data = $sql -> fetch()){
                 <div class="col-md-4 col-lg-3 pb-3 g-5">
                     <div class="card ms-2">
                         <div class="card-header text-center"><?=$data['brand']?></div>
-                        <center> <img src="user/upload/<?=$data['foto']?>" class="card-img-top w-100" alt="..."></center>
+                        <center> <img src="admin/upload/<?=$data['foto']?>" class="card-img-top w-100" alt="..."></center>
                         <div class="card-body">
                             <p class="card-text">Rp.<?=$data['harga']?></p>
                             <p class="card-text">Ukuran : <?=$data['ukuran']?></p>
@@ -41,4 +41,4 @@ while($data = $sql -> fetch()){
                 <?php } ?>
             </body>
             </html>
-<?php require_once __DIR__ . './user/footer.php'; ?>
+<?php require_once __DIR__ . './src/footer.php'; ?>

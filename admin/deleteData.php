@@ -1,5 +1,5 @@
 <?php
-    require_once __DIR__ . './getConnection.php';
+    require_once('../database/getConnection.php');
 
     $connection = getConnection();
     $id = $_GET['id'];

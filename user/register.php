@@ -1,7 +1,7 @@
 <?php
-    require_once __DIR__ . './cdnBootstrap.php';
-    require_once __DIR__ . './cdnFontAwesome.php';
-    require_once __DIR__ . './getConnection.php';
+    require_once('../src/cdnBootstrap.php');
+    require_once('../src/cdnFontAwesome.php');
+    require_once('../database/getConnection.php');
    
     //get conection to database
     $connection = getConnection();
@@ -27,6 +27,8 @@
         $saved = $result->execute($params);
         if ($saved) {
             header("location:login.php");
+        }else{
+          echo "<script> alert('Register gagal');</script>";
         }
         $connection = null;
     }

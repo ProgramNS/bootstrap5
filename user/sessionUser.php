@@ -1,7 +1,7 @@
 <?php
-    require_once __DIR__ . './cdnBootstrap.php';
-    require_once __DIR__ . './cdnFontAwesome.php';
-    require_once __DIR__ . './getConnection.php';
+    require_once('../src/cdnBootstrap.php');
+    require_once('../src/cdnFontAwesome.php');
+    require_once('../database/getConnection.php');
 
     session_start();
 ?>
@@ -31,19 +31,19 @@
               <a class="nav-link" href="isiContent.php">Product</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About Us</a>
+              <a class="nav-link" href="about.php">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Invoice</a>
+              <a class="nav-link" href="Contact.php">Contact</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="./login.php"><?php echo $_SESSION['username']['username'];?></a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['username']['username'];?></a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+              </ul>
             </li>
           </ul>
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-            <button class="btn btn-outline-primary" type="submit">Search</button>
-          </form>
+          </ul>
         </div>
       </div>
     </nav>

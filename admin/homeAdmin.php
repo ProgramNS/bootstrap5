@@ -1,8 +1,8 @@
 <?php
-    require_once __DIR__ . './cdnBootstrap.php';
-    require_once __DIR__ . './cdnFontAwesome.php';
-    require_once __DIR__ . './sessionAdmin.php';
-    require_once __DIR__ . './product.php';
+    require_once('../src/cdnBootstrap.php');
+    require_once('../src/cdnFontAwesome.php');
+    require_once('sessionAdmin.php');
+    require_once('product.php');
 ?>
 
 <!DOCTYPE html>

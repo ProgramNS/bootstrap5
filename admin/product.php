@@ -1,9 +1,9 @@
 <?php
-    require_once __DIR__ . './cdnBootstrap.php';
-    require_once __DIR__ . './cdnFontAwesome.php';
-    require_once __DIR__ . './sessionAdmin.php';
-    require_once __DIR__ . './tambahData.php';
-    require_once __DIR__ . './getConnection.php';          
+    require_once('../src/cdnBootstrap.php');
+    require_once('../src/cdnFontAwesome.php');
+    require_once('sessionAdmin.php');
+    require_once('tambahData.php');
+    require_once('../database/getConnection.php');          
     ?>
 
 <!DOCTYPE html>

@@ -1,9 +1,9 @@
 <?php
-    require_once __DIR__ . './cdnBootstrap.php';
-    require_once __DIR__ . './cdnFontAwesome.php';
-    require_once __DIR__ . './navbar.php';
-    require_once __DIR__ . './jumbotron.php';
-    require_once __DIR__ . './footer.php';
+    require_once('src/cdnBootstrap.php');
+    require_once('src/cdnFontAwesome.php');
+    require_once('src/navbar.php');
+    require_once('src/jumbotron.php');
+    require_once('src/footer.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
