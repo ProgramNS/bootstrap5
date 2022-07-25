@@ -34,7 +34,7 @@
               <a class="nav-link" href="about.php">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="Contact.php">Contact</a>
+              <a class="nav-link" href="contact.php">Contact</a>
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo $_SESSION['username']['username'];?></a>

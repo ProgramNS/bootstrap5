@@ -32,7 +32,7 @@
                     <p class="card-text text-decoration-line-through">Rp. <?php echo $data['harga_asli'];?></p>
                     <p class="card-text mt-4">Rp. <?php echo $data['harga_diskon'];?></p>
                     <p class="card-text"><?php echo $data['deskripsi'];?></p>
-                    <a href="#" class='btn btn-primary btn-sm'>Beli Sekarang</a>
+                    <a href="./user/login.php" class='btn btn-primary btn-sm'>Beli Sekarang</a>
                   </div>
                 </div>
               </div>

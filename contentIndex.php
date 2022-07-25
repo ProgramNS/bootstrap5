@@ -34,7 +34,7 @@ while($data = $sql -> fetch()){
                             <p class="card-text"><?=$data['deskripsi']?></p>
                         </div>
                         <div class="card-footer">
-                            <center> <a href="#"><button class="btn btn-primary">Beli Sekarang</button></a></center>
+                            <center> <a href="user/login.php"><button class="btn btn-primary">Beli Sekarang</button></a></center>
                         </div>
                     </div>
                 </div>
